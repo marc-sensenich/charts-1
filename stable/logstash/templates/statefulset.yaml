@@ -136,6 +136,11 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+
+{{- if .Values.serviceAccountName }}
+      serviceAccountName: {{ .Values.serviceAccountName  }}
+{{- end }}
+
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       volumes:
         - name: patterns
