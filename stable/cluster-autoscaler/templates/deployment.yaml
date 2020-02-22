@@ -141,7 +141,7 @@ spec:
                 secretKeyRef:
                   key: NodeResourceGroup
                   name: {{ template "cluster-autoscaler.secret-name" . }}
-            {{- else }}
+            {{- end }}
             {{- end }}
           {{- end }}
           {{- range $key, $value := .Values.extraEnv }}
