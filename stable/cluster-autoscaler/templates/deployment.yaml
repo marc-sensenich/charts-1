@@ -130,6 +130,7 @@ spec:
                 secretKeyRef:
                   key: ClientSecret
                   name: {{ template "cluster-autoscaler.secret-name" . }}
+            {{- if .Values.azureUseAKS }}
             - name: AZURE_CLUSTER_NAME
               valueFrom:
                 secretKeyRef:
@@ -140,6 +141,7 @@ spec:
                 secretKeyRef:
                   key: NodeResourceGroup
                   name: {{ template "cluster-autoscaler.secret-name" . }}
+            {{- else }}
             {{- end }}
           {{- end }}
           {{- range $key, $value := .Values.extraEnv }}

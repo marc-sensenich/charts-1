@@ -44,6 +44,8 @@ azureClusterName: ""
 azureNodeResourceGroup: ""
 # if using MSI, ensure subscription ID and resource group are set
 azureUseManagedIdentityExtension: false
+# if not using AKS, set this to false
+azureUseAKS: true
 
 # Currently only `gce`, `aws`, `azure` & `spotinst` are supported
 cloudProvider: aws
@@ -202,3 +204,4 @@ kubeTargetVersionOverride: ""
 
 secret:
   create: true
+  # name: ""
