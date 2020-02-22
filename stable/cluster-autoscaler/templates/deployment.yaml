@@ -49,6 +49,7 @@ spec:
             - ./cluster-autoscaler
             - --cloud-provider={{ .Values.cloudProvider }}
             - --namespace={{ .Release.Namespace }}
+            - --leader-elect-resource-name={{ .Values.leaderElectResourceName }}
           {{- if .Values.autoscalingGroups }}
             {{- range .Values.autoscalingGroups }}
             - --nodes={{ .minSize }}:{{ .maxSize }}:{{ .name }}

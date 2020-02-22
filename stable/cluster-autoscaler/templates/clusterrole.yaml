@@ -31,7 +31,7 @@ rules:
     resources:
       - endpoints
     resourceNames:
-      - cluster-autoscaler
+      - {{ .Values.leaderElectResourceName }}
     verbs:
       - get
       - update

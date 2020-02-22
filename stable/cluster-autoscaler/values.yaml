@@ -205,3 +205,5 @@ kubeTargetVersionOverride: ""
 secret:
   create: true
   # name: ""
+
+leaderElectResourceName: cluster-autoscaler
