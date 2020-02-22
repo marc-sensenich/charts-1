@@ -199,3 +199,6 @@ fullnameOverride: ""
 
 # Allow overridding the .Capabilities.KubeVersion.GitVersion (useful for "helm template" command)
 kubeTargetVersionOverride: ""
+
+secret:
+  create: true

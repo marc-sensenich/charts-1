@@ -24,6 +24,17 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- end -}}
 
 {{/*
+Use the defined secret name or the fullname of the app.
+*/}}
+{{- define "cluster-autoscaler.secret-name" -}}
+{{- if .Values.secret.name -}}
+{{- .Values.secret.name -}}
+{{- else -}}
+{{ include "cluster-autoscaler.fullname" . }}
+{{- end -}}
+{{- end -}}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "cluster-autoscaler.chart" -}}

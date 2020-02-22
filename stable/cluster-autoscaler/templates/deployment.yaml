@@ -88,7 +88,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: AwsSecretAccessKey
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             {{- end }}
           {{- else if eq .Values.cloudProvider "spotinst" }}
             - name: SPOTINST_TOKEN
@@ -100,17 +100,17 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: SubscriptionID
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: ARM_RESOURCE_GROUP
               valueFrom:
                 secretKeyRef:
                   key: ResourceGroup
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: ARM_VM_TYPE
               valueFrom:
                 secretKeyRef:
                   key: VMType
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             {{- if .Values.azureUseManagedIdentityExtension }}
             - name: ARM_USE_MANAGED_IDENTITY_EXTENSION
               value: "true"
@@ -119,27 +119,27 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: TenantID
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: ARM_CLIENT_ID
               valueFrom:
                 secretKeyRef:
                   key: ClientID
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: ARM_CLIENT_SECRET
               valueFrom:
                 secretKeyRef:
                   key: ClientSecret
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: AZURE_CLUSTER_NAME
               valueFrom:
                 secretKeyRef:
                   key: ClusterName
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             - name: AZURE_NODE_RESOURCE_GROUP
               valueFrom:
                 secretKeyRef:
                   key: NodeResourceGroup
-                  name: {{ template "cluster-autoscaler.fullname" . }}
+                  name: {{ template "cluster-autoscaler.secret-name" . }}
             {{- end }}
           {{- end }}
           {{- range $key, $value := .Values.extraEnv }}
