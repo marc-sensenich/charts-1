@@ -177,8 +177,11 @@ spec:
           securityContext:
             {{ toYaml .Values.containerSecurityContext | nindent 12 | trim }}
           {{- end }}
-          {{- if eq .Values.cloudProvider "gce" }}
           volumeMounts:
+            {{- with .Values.extraVolumeMounts }}
+{{ toYaml . | indent 12 }}
+            {{- end }}
+            {{- if eq .Values.cloudProvider "gce" }}
             - name: cloudconfig
               mountPath: {{ .Values.cloudConfigPath }}
               readOnly: true
@@ -198,8 +201,11 @@ spec:
       securityContext:
         {{ toYaml .Values.securityContext | nindent 8 | trim }}
       {{- end }}
-      {{- if eq .Values.cloudProvider "gce" }}
       volumes:
+      {{- with .Values.extraVolumes }}
+{{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- if eq .Values.cloudProvider "gce" }}
         - name: cloudconfig
           hostPath:
             path: {{ .Values.cloudConfigPath }}

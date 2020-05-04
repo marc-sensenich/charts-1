@@ -88,6 +88,18 @@ extraArgs:
   # skip-nodes-with-local-storage: false
   # skip-nodes-with-system-pods: true
 
+# Optionally specify additional volumes for the pod.
+extraVolumes: []
+# extraVolumes:
+#  - name: some-volume-name
+#    emptyDir: {}
+
+# Optionally specify additional volume mounts for the container.
+extraVolumeMounts: []
+# extraVolumeMounts:
+#  - name: some-volume-name
+#    mountPath: /path/in/container
+
 ## Affinity for pod assignment
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ## affinity: {}
